@@ -1,6 +1,8 @@
 package org.pmareke.cerner;
 
 import org.pmareke.cerner.demographic.Person;
+import org.pmareke.cerner.fever.Location;
+import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 import org.pmareke.cerner.patient.*;
 import org.pmareke.cerner.timezone.Baby;
@@ -41,7 +43,7 @@ public class Main {
                 diseases.add(cancer);
 
             Patient brad = new Patient(
-                    "Bard",
+                    "Brad",
                     41,
                     new Address(
                         "UK",
@@ -160,11 +162,19 @@ public class Main {
         }
 
         /**
-         * Eight exercise:
+         * Eighth exercise:
          *
          *  Temperature class to know whether patient has fever or not
          *  and in what location is the reading taken such as mouth, armpit, ear.
          */
+        brad.setTemperature(
+                new Temperature(
+                        40,
+                        Location.Ear
+                )
+        );
+
+        System.out.println( String.format( ( brad.hasFever() ) ? "%s has fever" :"%s is fine", brad.getName() ) );
 
         /**
          * Ninth exercise:
