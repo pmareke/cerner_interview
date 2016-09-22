@@ -33,13 +33,14 @@ public class Main {
         );
 
         List<Allergy> allergies = new ArrayList<Allergy>();
-        allergies.add(dust);
-        allergies.add(cat);
+            allergies.add(dust);
+            allergies.add(cat);
 
         Disease cancer = new Disease("cancer");
+
         List<Disease> diseases = new ArrayList<Disease>();
 
-        diseases.add(cancer);
+            diseases.add(cancer);
 
         Patient brad = new Patient(
             "Brad",
@@ -58,6 +59,7 @@ public class Main {
         System.out.println("**** Exercise 1 ****");
         System.out.println("********************");
         System.out.println(brad.getFullAllergies());
+        System.out.println(brad.getFullDiseases());
 
         /**
          * Second exercise:
@@ -145,12 +147,12 @@ public class Main {
             patients.add(henry);
             patients.add(susan);
 
-        Collections.sort(patients, new LastSeenComparator());
-
-
         System.out.println("********************");
         System.out.println("**** Exercise 3 ****");
         System.out.println("********************");
+
+        Collections.sort(patients, new LastSeenComparator());
+
         System.out.println("Last seen patients:");
         for (int i = 0; i < 3; i++) {
             System.out.println(String.format("%s last visit: %s", patients.get(i).getName(),
@@ -233,11 +235,12 @@ public class Main {
         System.out.println("********************");
         System.out.println("**** Exercise 7 ****");
         System.out.println("********************");
-        if (brad.hasMedicines()){
-            System.out.println(String.format("%s has medicines.\n", brad.getName()));
-            System.out.println(brad.getFullMedicines());
-        } else{
-            System.out.println("%s has not medicines.\n");
+        for (Patient patient : patients) {
+            if (patient.hasMedicines()){
+                System.out.println(patient.getFullMedicines());
+            } else{
+                System.out.println(String.format("%s has not medicines.\n",  patient.getName()));
+            }
         }
 
         /**

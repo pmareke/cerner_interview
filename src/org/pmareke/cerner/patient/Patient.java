@@ -109,6 +109,19 @@ public class Patient extends Person {
         return fullAllergies;
     }
 
+    public String getFullDiseases(){
+        String fullDiseases = String.format("%s has the next diseases: \n", this.getName());
+
+        for (int i = 0; i < this.getDiseases().size(); i++) {
+            fullDiseases += String.format("%s disease.",
+                this.getDiseases().get(i).getName()
+            );
+            fullDiseases += "\n";
+        }
+
+        return fullDiseases;
+    }
+
     public String getFullMedicines(){
         String medicines = String.format("%s has the next medicines: ", this.getName());
 
