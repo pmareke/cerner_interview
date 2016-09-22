@@ -102,7 +102,7 @@ public class Main {
             ),
             allergies,
             diseases,
-            new ArrayList<>(),
+            new ArrayList<Medication>(),
             new Temperature(20, Location.Ampit),
             new Date("10/12/2016")
         );
@@ -118,7 +118,7 @@ public class Main {
             ),
             allergies,
             diseases,
-            new ArrayList<>(),
+            new ArrayList<Medication>(),
             new Temperature(20, Location.Ampit),
             new Date("10/12/2011")
         );
@@ -134,7 +134,7 @@ public class Main {
             ),
             allergies,
             diseases,
-            new ArrayList<>(),
+            new ArrayList<Medication>(),
             new Temperature(20, Location.Ampit),
             new Date("10/12/2007")
         );
