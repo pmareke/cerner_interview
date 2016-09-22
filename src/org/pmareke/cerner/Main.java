@@ -1,6 +1,7 @@
 package org.pmareke.cerner;
 
 import org.pmareke.cerner.demographic.Person;
+import org.pmareke.cerner.medication.Medication;
 import org.pmareke.cerner.patient.*;
 import org.pmareke.cerner.timezone.Baby;
 
@@ -128,6 +129,35 @@ public class Main {
          *  Design a class where a nurse had to assign medication to a patient
          *  along with the start and the end dates ( there may or may not be end date).
          */
+
+        Medication aspirine = new Medication(
+                "Aspirine",
+                new Date("01/01/2016")
+        );
+
+        List<Medication> medications = new ArrayList<Medication>();
+            medications.add(aspirine);
+
+        brad.setMedications(medications);
+
+        System.out.println( String.format("%s has the next medicines: ", brad.getName()));
+
+        for (int i = 0; i < brad.getMedications().size(); i++) {
+             final String medicine;
+                if (brad.getMedications().get(i).getEnd() != null) {
+                    medicine = String.format("%s from %s to %s",
+                            brad.getMedications().get(i).getName(),
+                            brad.getMedications().get(i).getStart(),
+                            brad.getMedications().get(i).getEnd()
+                    );
+                } else {
+                    medicine = String.format("%s since %s",
+                        brad.getMedications().get(i).getName(),
+                        brad.getMedications().get(i).getStart()
+                    );
+                }
+            System.out.println(medicine);
+        }
 
         /**
          * Eight exercise:
