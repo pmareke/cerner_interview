@@ -180,11 +180,16 @@ public class Main {
          * Ninth exercise:
          *
          *  Temperature :
-         *   0. Default  temperatures: 0.0º or 32.0F
+         *   0. Default  temperatures: 0ºC => Via constructor in Temperature
        	 *   1. Convert Celsius to Fahrenheit.
        	 *   2. Convert Fahrenheit to Celsius.
-       	 *   3. Update default temperature.
+       	 *   3. Update default temperature. => Via Setter in Temperature
          */
+
+        System.out.println(String.format("%s has %sº in Fahrenheit scale and %sº in Celsius scale",
+                            brad.getName(),
+                            brad.getTemperature().getTemperatureInFahrenheit(),
+                            brad.getTemperature().getTemperature()));
 
     }
 }

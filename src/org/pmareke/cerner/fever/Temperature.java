@@ -4,7 +4,7 @@ package org.pmareke.cerner.fever;
  * Created by pmareke on 22/09/16.
  */
 public class Temperature {
-    private int temperature;
+    private float temperature;
     private Location location;
 
     public Temperature(int temperature, Location location) {
@@ -12,7 +12,12 @@ public class Temperature {
         this.location = location;
     }
 
-    public int getTemperature() {
+    public Temperature(Location location) {
+        this.temperature = 0;
+        this.location = location;
+    }
+
+    public float getTemperature() {
         return temperature;
     }
 
@@ -26,6 +31,10 @@ public class Temperature {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public double getTemperatureInFahrenheit() {
+        return ( temperature * (9/5.0) + 32 );
     }
 
 }
