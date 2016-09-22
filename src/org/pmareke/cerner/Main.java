@@ -6,7 +6,6 @@ import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 import org.pmareke.cerner.patient.*;
 import org.pmareke.cerner.timezone.Baby;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,37 +22,37 @@ public class Main {
          *  with that person and their respective severities.
          */
 
-            Allergy dust = new Allergy(
-                    "dust",
-                    Severity.HIGH
-            );
+        Allergy dust = new Allergy(
+            "dust",
+            Severity.HIGH
+        );
 
-            Allergy cat = new Allergy(
-                    "cat",
-                    Severity.LOW
-            );
+        Allergy cat = new Allergy(
+            "cat",
+            Severity.LOW
+        );
 
-            List<Allergy> allergies = new ArrayList<Allergy>();
-                allergies.add(dust);
-                allergies.add(cat);
+        List<Allergy> allergies = new ArrayList<Allergy>();
+        allergies.add(dust);
+        allergies.add(cat);
 
-            Disease cancer = new Disease("cancer");
+        Disease cancer = new Disease("cancer");
+        List<Disease> diseases = new ArrayList<Disease>();
 
-            List<Disease> diseases = new ArrayList<Disease>();
-                diseases.add(cancer);
+        diseases.add(cancer);
 
-            Patient brad = new Patient(
-                    "Brad",
-                    41,
-                    new Address(
-                        "UK",
-                        "London",
-                        "Paddigton",
-                        1234567890
-                    ),
-                    allergies,
-                    diseases
-            );
+        Patient brad = new Patient(
+            "Brad",
+            41,
+            new Address(
+                "UK",
+                "London",
+                "Paddigton",
+                1234567890
+            ),
+            allergies,
+            diseases
+        );
 
         System.out.println("********************");
         System.out.println("**** Exercise 1 ****");
@@ -69,11 +68,12 @@ public class Main {
          */
 
         allergies.add(
-                new Allergy(
-                        "food",
-                        Severity.MEDIUM
-                )
+            new Allergy(
+                "food",
+                Severity.MEDIUM
+            )
         );
+
         brad.setAllergies(allergies);
 
         System.out.println("********************");
@@ -96,9 +96,9 @@ public class Main {
          */
 
         Person John = new Person(
-                "John",
-                32,
-                new Address("Spain",
+            "John",
+            32,
+            new Address("Spain",
                 "Cataluña",
                 "Barcelona",
                 1234567890)
@@ -116,22 +116,21 @@ public class Main {
          */
 
         Baby carl = new Baby(
-                "Carl",
-                new Date("09/23/1983"),
-                "Europe",
-                "Madrid"
-
+            "Carl",
+            new Date("09/23/1983"),
+            "Europe",
+            "Madrid"
         );
 
         System.out.println("********************");
         System.out.println("**** Exercise 5 ****");
         System.out.println("********************");
         System.out.println( String.format("%s was born in %s at %s, %s.",
-                                            carl.getName(), carl.getBirth(), carl.getCity(), carl.getContinent())
+            carl.getName(), carl.getBirth(), carl.getCity(), carl.getContinent())
         );
 
         System.out.println( String.format("But the date of birth of %s was %s in New York, America.\n",
-                                            carl.getName(), carl.getBirthInOtherTimeZone("America", "New York"))
+            carl.getName(), carl.getBirthInOtherTimeZone("America", "New York"))
         );
 
 
@@ -143,8 +142,8 @@ public class Main {
          */
 
         Medication aspirine = new Medication(
-                "Aspirine",
-                new Date("01/01/2016")
+            "Aspirine",
+            new Date("01/01/2016")
         );
 
         List<Medication> medications = new ArrayList<Medication>();
@@ -180,16 +179,18 @@ public class Main {
          *  and in what location is the reading taken such as mouth, armpit, ear.
          */
         brad.setTemperature(
-                new Temperature(
-                        40,
-                        Location.Ear
-                )
+            new Temperature(
+                40,
+                Location.Ear
+            )
         );
 
         System.out.println("********************");
         System.out.println("**** Exercise 8 ****");
         System.out.println("********************");
-        System.out.println( String.format( ( brad.hasFever() ) ? "%s has fever.\n" :"%s is fine.\n", brad.getName() ) );
+        System.out.println(
+            String.format( ( brad.hasFever() ) ? "%s has fever and it was took in the %s.\n" :"%s is fine.\n",
+                brad.getName(), brad.getTemperature().getLocation() ) );
 
         /**
          * Ninth exercise:
@@ -205,9 +206,8 @@ public class Main {
         System.out.println("**** Exercise 9 ****");
         System.out.println("********************");
         System.out.println(String.format("%s has %sº in Fahrenheit scale and %sº in Celsius scale.\n",
-                            brad.getName(),
-                            brad.getTemperature().getTemperatureInFahrenheit(),
-                            brad.getTemperature().getTemperature()));
-
+            brad.getName(),
+            brad.getTemperature().getTemperatureInFahrenheit(),
+            brad.getTemperature().getTemperature()));
     }
 }
