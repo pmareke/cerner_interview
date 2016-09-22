@@ -1,5 +1,6 @@
 package org.pmareke.cerner;
 
+import org.pmareke.cerner.demographic.Person;
 import org.pmareke.cerner.patient.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,43 +17,43 @@ public class Main {
          *  with that person and their respective severities.
          */
 
-		Allergy dust = new Allergy(
-		        "dust",
-			    Severity.HIGH
-		);
+            Allergy dust = new Allergy(
+                    "dust",
+                    Severity.HIGH
+            );
 
-        Allergy cat = new Allergy(
-                "cat",
-                Severity.LOW
-        );
+            Allergy cat = new Allergy(
+                    "cat",
+                    Severity.LOW
+            );
 
-        List<Allergy> allergies = new ArrayList<Allergy>();
-            allergies.add(dust);
-            allergies.add(cat);
+            List<Allergy> allergies = new ArrayList<Allergy>();
+                allergies.add(dust);
+                allergies.add(cat);
 
-        Disease cancer = new Disease("cancer");
+            Disease cancer = new Disease("cancer");
 
-        List<Disease> diseases = new ArrayList<Disease>();
-            diseases.add(cancer);
+            List<Disease> diseases = new ArrayList<Disease>();
+                diseases.add(cancer);
 
-        Patient brad = new Patient(
-                "Bard",
-                41,
-                new Address(
-                    "UK",
-                    "London",
-                    "Paddigton",
-                    1234567890
-                ),
-                allergies,
-                diseases
-        );
+            Patient brad = new Patient(
+                    "Bard",
+                    41,
+                    new Address(
+                        "UK",
+                        "London",
+                        "Paddigton",
+                        1234567890
+                    ),
+                    allergies,
+                    diseases
+            );
 
-        System.out.println(brad.getName() + " has the next allergies: ");
+            System.out.println(brad.getName() + " has the next allergies: ");
 
-        for (int i = 0; i < brad.getAllergies().size(); i++) {
-            System.out.println(brad.getAllergies().get(i).getName() + " with a " + brad.getAllergies().get(i).getSeverity() + " severity");
-        }
+            for (int i = 0; i < brad.getAllergies().size(); i++) {
+                System.out.println(brad.getAllergies().get(i).getName() + " with a " + brad.getAllergies().get(i).getSeverity() + " severity");
+            }
 
         /**
          * Second exercise:
@@ -73,6 +74,17 @@ public class Main {
          *
          *  Person Demographic Problem to store information about every person.
          */
+
+        Person Jhon = new Person(
+                "Jhon",
+                32,
+                new Address("Spain",
+                "Cataluña",
+                "Barcelona",
+                1234567890)
+        );
+
+        System.out.println(Jhon.getName() + " lives in " + Jhon.getFullAddress());
 
         /**
          * Fifth exercise:
