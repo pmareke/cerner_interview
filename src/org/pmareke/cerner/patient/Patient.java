@@ -70,11 +70,7 @@ public class Patient extends Person {
     }
 
     public boolean hasFever(){
-        if (temperature.getTemperature() > 39) {
-            return true;
-        }else {
-            return false;
-        }
+        return (temperature.getTemperature() > 39) ? true : false;
     }
 
     public String getFullAllergies(){
@@ -112,5 +108,9 @@ public class Patient extends Person {
         }
 
         return medicines;
+    }
+
+    public boolean hasMedicines(){
+        return ( this.getMedications().size() > 0 ) ? true : false ;
     }
 }

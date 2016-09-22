@@ -134,14 +134,9 @@ public class Main {
                                             carl.getName(), carl.getBirthInOtherTimeZone("America", "New York"))
         );
 
-        /**
-         * Sixth exercise:
-         *
-         *  Implementing a system that notifies nurse when a patient should receive medications.
-         */
 
         /**
-         * Seventh exercise:
+         * Sixth exercise:
          *
          *  Design a class where a nurse had to assign medication to a patient
          *  along with the start and the end dates ( there may or may not be end date).
@@ -158,9 +153,25 @@ public class Main {
         brad.setMedications(medications);
 
         System.out.println("********************");
-        System.out.println("**** Exercise 7 ****");
+        System.out.println("**** Exercise 6 ****");
         System.out.println("********************");
         System.out.println(brad.getFullMedicines() );
+
+        /**
+         * Seventh exercise:
+         *
+         *  Implementing a system that notifies nurse when a patient should receive medications.
+         */
+
+        System.out.println("********************");
+        System.out.println("**** Exercise 7 ****");
+        System.out.println("********************");
+        if (brad.hasMedicines()){
+            System.out.println(String.format("%s has medicines.\n", brad.getName()));
+            System.out.println(brad.getFullMedicines());
+        } else{
+            System.out.println("%s has not medicines.\n");
+        }
 
         /**
          * Eighth exercise:
