@@ -1,27 +1,26 @@
-package org.pmareke.cerner.patient;
+package org.pmareke.cerner.test;
 
-import org.pmareke.cerner.medication.Medication;
+import org.pmareke.cerner.patient.*;
+import java.util.ArrayList;
+import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by pmareke on 22/09/16.
  */
-public class Exercise6Test {
-
-  /**
-   * Sixth exercise:
-   *
-   *  Design a class where a nurse had to assign medication to a patient
-   *  along with the start and the end dates ( there may or may not be end date).
-   */
+public class Exercise1Test {
 
   @Test()
-  public void testExercise6(){
+  public void testExercise1(){
+
+    /**
+     * First exercise:
+     *
+     *  Develop an Allergy class which can hold different severities (LOW, MEDIUM or HIGH)
+     *  and be tied to a Patient to retrieve the allergies associated
+     *  with that person and their respective severities.
+     */
 
     Allergy dust = new Allergy(
         "dust",
@@ -55,19 +54,9 @@ public class Exercise6Test {
         allergies,
         diseases
     );
-
-    Medication aspirine = new Medication(
-        "Aspirine",
-        new Date("01/01/2016")
-    );
-
-    List<Medication> medications = new ArrayList<Medication>();
-    medications.add(aspirine);
-
-    brad.setMedications(medications);
-
-    Assert.assertTrue( brad.getMedications().size() > 0);
-
+    Assert.assertTrue( brad.getFullAllergies().length() > 0 );
+    Assert.assertTrue( brad.getFullDiseases().length() > 0 );
 
   }
+
 }

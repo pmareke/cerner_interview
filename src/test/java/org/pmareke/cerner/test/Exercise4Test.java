@@ -1,6 +1,7 @@
-package org.pmareke.cerner.patient;
+package org.pmareke.cerner.test;
 
 import org.pmareke.cerner.demographic.Person;
+import org.pmareke.cerner.patient.Address;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

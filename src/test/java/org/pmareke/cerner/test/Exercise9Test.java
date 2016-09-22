@@ -1,7 +1,11 @@
-package org.pmareke.cerner.patient;
+package org.pmareke.cerner.test;
 
 import org.pmareke.cerner.fever.Location;
 import org.pmareke.cerner.fever.Temperature;
+import org.pmareke.cerner.patient.Address;
+import org.pmareke.cerner.patient.Allergy;
+import org.pmareke.cerner.patient.Disease;
+import org.pmareke.cerner.patient.Patient;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

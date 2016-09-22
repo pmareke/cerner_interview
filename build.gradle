@@ -9,20 +9,22 @@ repositories {
     mavenCentral()
 }
 
+
 test {
     // enable TestNG support (default is JUnit)
     useTestNG()
 
-    // show standard out and standard error of the test JVM(s) on the console
+    // show standard out and standard error of the patient JVM(s) on the console
     testLogging.showStandardStreams = true
 
-    // listen to events in the test execution lifecycle
+    // listen to events in the patient execution lifecycle
     beforeTest { descriptor ->
-        logger.lifecycle("Running test: " + descriptor)
+        logger.lifecycle("Running patient: " + descriptor)
     }
 
-    // listen to standard out and standard error of the test JVM(s)
+    // listen to standard out and standard error of the patient JVM(s)
     onOutput { descriptor, event ->
         logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
     }
 }
+

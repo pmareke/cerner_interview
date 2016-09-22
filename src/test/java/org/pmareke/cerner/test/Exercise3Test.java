@@ -1,8 +1,9 @@
-package org.pmareke.cerner.patient;
+package org.pmareke.cerner.test;
 
 import org.pmareke.cerner.fever.Location;
 import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
+import org.pmareke.cerner.patient.*;
 import org.pmareke.cerner.sort.LastSeenComparator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -115,10 +116,6 @@ public class Exercise3Test {
     patients.add(tom);
     patients.add(henry);
     patients.add(susan);
-
-    System.out.println("********************");
-    System.out.println("**** Exercise 3 ****");
-    System.out.println("********************");
 
     Collections.sort(patients, new LastSeenComparator());
 

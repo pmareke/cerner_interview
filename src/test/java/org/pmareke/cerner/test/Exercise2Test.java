@@ -1,5 +1,6 @@
-package org.pmareke.cerner.patient;
+package org.pmareke.cerner.test;
 
+import org.pmareke.cerner.patient.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,18 +10,18 @@ import java.util.List;
 /**
  * Created by pmareke on 22/09/16.
  */
-public class Exercise1Test {
+public class Exercise2Test {
+
+  /**
+   * Second exercise:
+   *
+   *  Design a system for entering and displaying the allergies patients have with given fields!
+   *
+   *  Via Getters and Setters
+   */
 
   @Test()
-  public void testExercise1(){
-
-    /**
-     * First exercise:
-     *
-     *  Develop an Allergy class which can hold different severities (LOW, MEDIUM or HIGH)
-     *  and be tied to a Patient to retrieve the allergies associated
-     *  with that person and their respective severities.
-     */
+  public void testExercise2(){
 
     Allergy dust = new Allergy(
         "dust",
@@ -54,9 +55,19 @@ public class Exercise1Test {
         allergies,
         diseases
     );
-    Assert.assertTrue( brad.getFullAllergies().length() > 0 );
-    Assert.assertTrue( brad.getFullDiseases().length() > 0 );
 
+    int allergiesBefore = brad.getAllergies().size();
+
+    allergies.add(
+        new Allergy(
+            "food",
+            Severity.MEDIUM
+        )
+    );
+
+    brad.setAllergies(allergies);
+
+    Assert.assertTrue( allergiesBefore < brad.getAllergies().size());
   }
 
 }
