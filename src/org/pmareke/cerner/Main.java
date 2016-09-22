@@ -5,10 +5,10 @@ import org.pmareke.cerner.fever.Location;
 import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 import org.pmareke.cerner.patient.*;
+import org.pmareke.cerner.sort.LastSeenComparator;
 import org.pmareke.cerner.timezone.Baby;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import java.util.*;
 
 public class Main {
 
@@ -88,6 +88,74 @@ public class Main {
          *  return the 3 most recently seen patients from that list.
          *  Assume the list of incoming patients is not ordered in any particular order.
          */
+
+        Patient tom = new Patient(
+            "Tom",
+            41,
+            new Address(
+                "UK",
+                "London",
+                "Paddigton",
+                1234567890
+            ),
+            allergies,
+            diseases,
+            new ArrayList<>(),
+            new Temperature(20, Location.Ampit),
+            new Date("10/12/2016")
+        );
+
+        Patient henry = new Patient(
+            "Henry",
+            41,
+            new Address(
+                "UK",
+                "London",
+                "Paddigton",
+                1234567890
+            ),
+            allergies,
+            diseases,
+            new ArrayList<>(),
+            new Temperature(20, Location.Ampit),
+            new Date("10/12/2011")
+        );
+
+        Patient susan = new Patient(
+            "Susan",
+            40,
+            new Address(
+                "UK",
+                "London",
+                "Yorkside",
+                1234567890
+            ),
+            allergies,
+            diseases,
+            new ArrayList<>(),
+            new Temperature(20, Location.Ampit),
+            new Date("10/12/2007")
+        );
+
+
+        List<Patient> patients = new ArrayList<Patient>();
+            brad.setLastSeen(new Date("12/01/2000"));
+            patients.add(brad);
+            patients.add(tom);
+            patients.add(henry);
+            patients.add(susan);
+
+        Collections.sort(patients, new LastSeenComparator());
+
+
+        System.out.println("********************");
+        System.out.println("**** Exercise 3 ****");
+        System.out.println("********************");
+        System.out.println("Last seen patients:");
+        for (int i = 0; i < 3; i++) {
+            System.out.println(String.format("%s last visit: %s", patients.get(i).getName(),
+                patients.get(i).getLastSeen()));
+        }
 
         /**
          * Fourth exercise:

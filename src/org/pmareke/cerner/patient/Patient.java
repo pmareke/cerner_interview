@@ -4,6 +4,7 @@ import org.pmareke.cerner.demographic.Person;
 import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,11 +16,13 @@ public class Patient extends Person {
     private List<Disease> diseases;
     private List<Medication> medications;
     private Temperature temperature;
+    private Date lastSeen;
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
+        this.lastSeen = new Date();
     }
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications) {
@@ -27,6 +30,7 @@ public class Patient extends Person {
         this.allergies = allergies;
         this.diseases = diseases;
         this.medications = medications;
+        this.lastSeen = new Date();
     }
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications, Temperature temperature) {
@@ -35,6 +39,16 @@ public class Patient extends Person {
         this.diseases = diseases;
         this.medications = medications;
         this.temperature = temperature;
+        this.lastSeen = new Date();
+    }
+
+    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications, Temperature temperature, Date lastSeen) {
+        super(name, age, address);
+        this.allergies = allergies;
+        this.diseases = diseases;
+        this.medications = medications;
+        this.temperature = temperature;
+        this.lastSeen = lastSeen;
     }
 
     public List<Allergy> getAllergies() {
@@ -67,6 +81,14 @@ public class Patient extends Person {
 
     public void setTemperature(Temperature temperature) {
         this.temperature = temperature;
+    }
+
+    public Date getLastSeen() {
+        return lastSeen;
+    }
+
+    public void setLastSeen(Date lastSeen) {
+        this.lastSeen = lastSeen;
     }
 
     public boolean hasFever(){
