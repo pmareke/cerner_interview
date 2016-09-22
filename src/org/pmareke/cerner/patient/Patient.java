@@ -76,4 +76,41 @@ public class Patient extends Person {
             return false;
         }
     }
+
+    public String getFullAllergies(){
+        String fullAllergies = String.format("%s has the next allergies: \n", this.getName());
+
+        for (int i = 0; i < this.getAllergies().size(); i++) {
+                    fullAllergies += String.format("%s with a %s severity.",
+                            this.getAllergies().get(i).getName(),
+                            this.getAllergies().get(i).getSeverity()
+                    );
+                    fullAllergies += "\n";
+        }
+
+        return fullAllergies;
+    }
+
+    public String getFullMedicines(){
+        String medicines = String.format("%s has the next medicines: ", this.getName());
+
+        for (int i = 0; i < this.getMedications().size(); i++) {
+            final String medicine;
+            if (this.getMedications().get(i).getEnd() != null) {
+                medicine = String.format("%s from %s to %s.",
+                        this.getMedications().get(i).getName(),
+                        this.getMedications().get(i).getStart(),
+                        this.getMedications().get(i).getEnd()
+                );
+            } else {
+                medicine = String.format("%s since %s.",
+                        this.getMedications().get(i).getName(),
+                        this.getMedications().get(i).getStart()
+                );
+            }
+            medicines += medicine + "\n";
+        }
+
+        return medicines;
+    }
 }

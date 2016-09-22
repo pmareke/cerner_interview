@@ -55,22 +55,31 @@ public class Main {
                     diseases
             );
 
-            System.out.println( String.format("%s has the next allergies: ", brad.getName()));
-
-            for (int i = 0; i < brad.getAllergies().size(); i++) {
-                System.out.println(
-                        String.format("%s with a %s severity",
-                                brad.getAllergies().get(i).getName(),
-                                brad.getAllergies().get(i).getSeverity()
-                        )
-                );
-            }
+        System.out.println("********************");
+        System.out.println("**** Exercise 1 ****");
+        System.out.println("********************");
+        System.out.println(brad.getFullAllergies());
 
         /**
          * Second exercise:
          *
          *  Design a system for entering and displaying the allergies patients have with given fields!
+         *
+         *  Via Getters and Setters
          */
+
+        allergies.add(
+                new Allergy(
+                        "food",
+                        Severity.MEDIUM
+                )
+        );
+        brad.setAllergies(allergies);
+
+        System.out.println("********************");
+        System.out.println("**** Exercise 2 ****");
+        System.out.println("********************");
+        System.out.println(brad.getFullAllergies());
 
         /**
          * Third exercise:
@@ -86,8 +95,8 @@ public class Main {
          *  Person Demographic Problem to store information about every person.
          */
 
-        Person Jhon = new Person(
-                "Jhon",
+        Person John = new Person(
+                "John",
                 32,
                 new Address("Spain",
                 "Cataluña",
@@ -95,7 +104,10 @@ public class Main {
                 1234567890)
         );
 
-        System.out.println(Jhon.getName() + " lives in " + Jhon.getFullAddress());
+        System.out.println("********************");
+        System.out.println("**** Exercise 4 ****");
+        System.out.println("********************");
+        System.out.println(John.getName() + " lives in " + John.getFullAddress() + ".\n");
 
         /**
          * Fifth exercise:
@@ -111,11 +123,14 @@ public class Main {
 
         );
 
-        System.out.println( String.format("%s was born in %s at %s, %s",
+        System.out.println("********************");
+        System.out.println("**** Exercise 5 ****");
+        System.out.println("********************");
+        System.out.println( String.format("%s was born in %s at %s, %s.",
                                             carl.getName(), carl.getBirth(), carl.getCity(), carl.getContinent())
         );
 
-        System.out.println( String.format("But the date of birth of %s was %s in New York, America",
+        System.out.println( String.format("But the date of birth of %s was %s in New York, America.\n",
                                             carl.getName(), carl.getBirthInOtherTimeZone("America", "New York"))
         );
 
@@ -142,24 +157,10 @@ public class Main {
 
         brad.setMedications(medications);
 
-        System.out.println( String.format("%s has the next medicines: ", brad.getName()));
-
-        for (int i = 0; i < brad.getMedications().size(); i++) {
-             final String medicine;
-                if (brad.getMedications().get(i).getEnd() != null) {
-                    medicine = String.format("%s from %s to %s",
-                            brad.getMedications().get(i).getName(),
-                            brad.getMedications().get(i).getStart(),
-                            brad.getMedications().get(i).getEnd()
-                    );
-                } else {
-                    medicine = String.format("%s since %s",
-                        brad.getMedications().get(i).getName(),
-                        brad.getMedications().get(i).getStart()
-                    );
-                }
-            System.out.println(medicine);
-        }
+        System.out.println("********************");
+        System.out.println("**** Exercise 7 ****");
+        System.out.println("********************");
+        System.out.println(brad.getFullMedicines() );
 
         /**
          * Eighth exercise:
@@ -174,7 +175,10 @@ public class Main {
                 )
         );
 
-        System.out.println( String.format( ( brad.hasFever() ) ? "%s has fever" :"%s is fine", brad.getName() ) );
+        System.out.println("********************");
+        System.out.println("**** Exercise 8 ****");
+        System.out.println("********************");
+        System.out.println( String.format( ( brad.hasFever() ) ? "%s has fever.\n" :"%s is fine.\n", brad.getName() ) );
 
         /**
          * Ninth exercise:
@@ -186,7 +190,10 @@ public class Main {
        	 *   3. Update default temperature. => Via Setter in Temperature
          */
 
-        System.out.println(String.format("%s has %sº in Fahrenheit scale and %sº in Celsius scale",
+        System.out.println("********************");
+        System.out.println("**** Exercise 9 ****");
+        System.out.println("********************");
+        System.out.println(String.format("%s has %sº in Fahrenheit scale and %sº in Celsius scale.\n",
                             brad.getName(),
                             brad.getTemperature().getTemperatureInFahrenheit(),
                             brad.getTemperature().getTemperature()));
