@@ -2,7 +2,10 @@ package org.pmareke.cerner;
 
 import org.pmareke.cerner.demographic.Person;
 import org.pmareke.cerner.patient.*;
+import org.pmareke.cerner.timezone.Baby;
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -49,10 +52,15 @@ public class Main {
                     diseases
             );
 
-            System.out.println(brad.getName() + " has the next allergies: ");
+            System.out.println( String.format("%s has the next allergies: ", brad.getName()));
 
             for (int i = 0; i < brad.getAllergies().size(); i++) {
-                System.out.println(brad.getAllergies().get(i).getName() + " with a " + brad.getAllergies().get(i).getSeverity() + " severity");
+                System.out.println(
+                        String.format("%s with a %s severity",
+                                brad.getAllergies().get(i).getName(),
+                                brad.getAllergies().get(i).getSeverity()
+                        )
+                );
             }
 
         /**
@@ -91,6 +99,22 @@ public class Main {
          *
          *  To record a new born's birth date and time reflecting the time zone.
          */
+
+        Baby carl = new Baby(
+                "Carl",
+                new Date("09/23/1983"),
+                "Europe",
+                "Madrid"
+
+        );
+
+        System.out.println( String.format("%s was born in %s at %s, %s",
+                                            carl.getName(), carl.getBirth(), carl.getCity(), carl.getContinent())
+        );
+
+        System.out.println( String.format("But the date of birth of %s was %s in New York, America",
+                                            carl.getName(), carl.getBirthInOtherTimeZone("America", "New York"))
+        );
 
         /**
          * Sixth exercise:
