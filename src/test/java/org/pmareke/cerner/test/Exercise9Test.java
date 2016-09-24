@@ -6,6 +6,7 @@ import org.pmareke.cerner.patient.Address;
 import org.pmareke.cerner.patient.Allergy;
 import org.pmareke.cerner.patient.Disease;
 import org.pmareke.cerner.patient.Patient;
+import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -29,31 +30,12 @@ public class Exercise9Test {
   @Test()
   public void testExercise9(){
 
-    Patient brad = new Patient(
-        "Brad",
-        41,
-        new Address(
-            "UK",
-            "London",
-            "Paddigton",
-            1234567890
-        ),
-        new ArrayList<Allergy>(),
-        new ArrayList<Disease>()
-    );
 
-    brad.setTemperature(
-        new Temperature(
-            40,
-            Location.Ear
-        )
-    );
+    Assert.assertEquals(Utils.brad.getTemperature().getTemperatureInFahrenheit(), 104.0);
 
+    Utils.brad.setTemperature(new Temperature(35, Location.Ear));
 
-    Assert.assertEquals(brad.getTemperature().getTemperatureInFahrenheit(), 104.0);
-
-    brad.setTemperature(new Temperature(35, Location.Ear));
-    Assert.assertEquals(brad.getTemperature().getTemperatureInFahrenheit(), 95.0);
+    Assert.assertEquals(Utils.brad.getTemperature().getTemperatureInFahrenheit(), 95.0);
   }
 
 }

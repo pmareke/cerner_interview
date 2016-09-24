@@ -2,6 +2,7 @@ package org.pmareke.cerner.test;
 
 import org.pmareke.cerner.demographic.Person;
 import org.pmareke.cerner.patient.Address;
+import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -20,16 +21,7 @@ public class Exercise4Test {
   @Test()
   public void testExercise4(){
 
-    Person John = new Person(
-        "John",
-        32,
-        new Address("Spain",
-            "Cataluña",
-            "Barcelona",
-            1234567890)
-    );
-
-    Assert.assertEquals("John", John.getName());
+    Assert.assertEquals("John", Utils.John.getName());
   }
 
 }

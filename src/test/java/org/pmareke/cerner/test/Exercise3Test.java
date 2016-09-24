@@ -5,6 +5,7 @@ import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 import org.pmareke.cerner.patient.*;
 import org.pmareke.cerner.sort.LastSeenComparator;
+import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
@@ -28,104 +29,18 @@ public class Exercise3Test {
   @Test()
   public void testExercise3(){
 
-    Allergy dust = new Allergy(
-        "dust",
-        Severity.HIGH
-    );
 
-    Allergy cat = new Allergy(
-        "cat",
-        Severity.LOW
-    );
+    Utils.brad.setLastSeen(new Date("12/01/2000"));
 
-    List<Allergy> allergies = new ArrayList<Allergy>();
-    allergies.add(dust);
-    allergies.add(cat);
+    Collections.sort(Utils.patients, new LastSeenComparator());
 
-    Disease cancer = new Disease("cancer");
+    Assert.assertEquals( Utils.tom, Utils.patients.get(0));
 
-    List<Disease> diseases = new ArrayList<Disease>();
+    Utils.brad.setLastSeen( new Date("10/12/2017") );
 
-    diseases.add(cancer);
+    Collections.sort(Utils.patients, new LastSeenComparator());
 
-    Patient brad = new Patient(
-        "Brad",
-        41,
-        new Address(
-            "UK",
-            "London",
-            "Paddigton",
-            1234567890
-        ),
-        allergies,
-        diseases
-    );
-
-    Patient tom = new Patient(
-        "Tom",
-        41,
-        new Address(
-            "UK",
-            "London",
-            "Paddigton",
-            1234567890
-        ),
-        allergies,
-        diseases,
-        new ArrayList<Medication>(),
-        new Temperature(20, Location.Ampit),
-        new Date("10/12/2016")
-    );
-
-    Patient henry = new Patient(
-        "Henry",
-        41,
-        new Address(
-            "UK",
-            "London",
-            "Paddigton",
-            1234567890
-        ),
-        allergies,
-        diseases,
-        new ArrayList<Medication>(),
-        new Temperature(20, Location.Ampit),
-        new Date("10/12/2011")
-    );
-
-    Patient susan = new Patient(
-        "Susan",
-        40,
-        new Address(
-            "UK",
-            "London",
-            "Yorkside",
-            1234567890
-        ),
-        allergies,
-        diseases,
-        new ArrayList<Medication>(),
-        new Temperature(20, Location.Ampit),
-        new Date("10/12/2007")
-    );
-
-
-    List<Patient> patients = new ArrayList<Patient>();
-    brad.setLastSeen(new Date("12/01/2000"));
-    patients.add(brad);
-    patients.add(tom);
-    patients.add(henry);
-    patients.add(susan);
-
-    Collections.sort(patients, new LastSeenComparator());
-
-    Assert.assertEquals( tom, patients.get(0));
-
-    brad.setLastSeen( new Date("10/12/2017") );
-
-    Collections.sort(patients, new LastSeenComparator());
-
-    Assert.assertEquals( brad, patients.get(0));
+    Assert.assertEquals( Utils.brad, Utils.patients.get(0));
 
   }
 

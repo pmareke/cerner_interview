@@ -1,11 +1,9 @@
 package org.pmareke.cerner.test;
 
 import org.pmareke.cerner.patient.*;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.pmareke.cerner.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.pmareke.cerner.utils.Utils.allergies;
 
 /**
  * Created by pmareke on 22/09/16.
@@ -23,51 +21,19 @@ public class Exercise2Test {
   @Test()
   public void testExercise2(){
 
-    Allergy dust = new Allergy(
-        "dust",
-        Severity.HIGH
-    );
 
-    Allergy cat = new Allergy(
-        "cat",
-        Severity.LOW
-    );
+    int allergiesBefore = Utils.brad.getAllergies().size();
 
-    List<Allergy> allergies = new ArrayList<Allergy>();
-    allergies.add(dust);
-    allergies.add(cat);
-
-    Disease cancer = new Disease("cancer");
-
-    List<Disease> diseases = new ArrayList<Disease>();
-
-    diseases.add(cancer);
-
-    Patient brad = new Patient(
-        "Brad",
-        41,
-        new Address(
-            "UK",
-            "London",
-            "Paddigton",
-            1234567890
-        ),
-        allergies,
-        diseases
-    );
-
-    int allergiesBefore = brad.getAllergies().size();
-
-    allergies.add(
+    Utils.allergies.add(
         new Allergy(
             "food",
             Severity.MEDIUM
         )
     );
 
-    brad.setAllergies(allergies);
+    Utils.brad.setAllergies(allergies);
 
-    Assert.assertTrue( allergiesBefore < brad.getAllergies().size());
+    Assert.assertTrue( allergiesBefore < Utils.brad.getAllergies().size());
   }
 
 }
