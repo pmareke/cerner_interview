@@ -1,4 +1,4 @@
-##Interview Questions
+## Interview Questions
 
 *Exercise 1:*
   - Develop an Allergy class which can hold different severities (HIGH, MEDIUM, LOW) and be tied to a Patient to retrieve the allergies associated with that patient and their respective severities. 
