@@ -26,6 +26,6 @@ public class Exercise6Test {
         List<Medication> medications = new ArrayList<>();
         medications.add(aspirine);
         Utils.brad.setMedications(medications);
-        Assert.assertTrue(Utils.brad.getMedications().size() > 0);
+        Assert.assertFalse(Utils.brad.getMedications().isEmpty());
     }
 }

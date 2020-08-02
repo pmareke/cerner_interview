@@ -123,6 +123,6 @@ public class Patient extends Person {
     }
 
     public boolean hasMedicines() {
-        return this.getMedications().size() > 0;
+        return !this.getMedications().isEmpty();
     }
 }
