@@ -1,7 +1,5 @@
 package org.pmareke.cerner.test;
 
-import org.pmareke.cerner.demographic.Person;
-import org.pmareke.cerner.patient.Address;
 import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,17 +9,14 @@ import org.testng.annotations.Test;
  */
 public class Exercise4Test {
 
-  /**
-   * Fourth exercise:
-   *
-   *  Person Demographic Problem to store information about every person.
-   */
+    /**
+     * Fourth exercise:
+     * <p>
+     * Person Demographic Problem to store information about every person.
+     */
 
-
-  @Test()
-  public void testExercise4(){
-
-    Assert.assertEquals("John", Utils.John.getName());
-  }
-
+    @Test()
+    public void testExercise4() {
+        Assert.assertEquals("John", Utils.john.getName());
+    }
 }

@@ -7,8 +7,12 @@ mainClassName = "org.pmareke.cerner.Main"
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
+dependencies {
+    testCompile 'org.testng:testng:6.10'
+}
 
 test {
     // enable TestNG support (default is JUnit)
@@ -24,7 +28,7 @@ test {
 
     // listen to standard out and standard error of the patient JVM(s)
     onOutput { descriptor, event ->
-        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message )
+        logger.lifecycle("Test: " + descriptor + " produced standard out/err: " + event.message)
     }
 }
 

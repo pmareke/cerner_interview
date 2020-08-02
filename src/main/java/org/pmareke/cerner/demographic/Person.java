@@ -6,6 +6,7 @@ import org.pmareke.cerner.patient.Address;
  * Created by pmareke on 22/09/16.
  */
 public class Person {
+
     private String name;
     private int age;
     private Address address;
@@ -37,8 +38,11 @@ public class Person {
     }
 
     public String getFullAddress() {
-        return address.getCountry() + ", " + address.getState() + " - " +
-                address.getAddress() + " and the phone number is " + address.getNumber();
+        return String.format("%s, %s - %s and the phone number is %s",
+            address.getCountry(),
+            address.getState(),
+            address.getAddress(),
+            address.getNumber());
     }
 
     public void setAddress(Address address) {

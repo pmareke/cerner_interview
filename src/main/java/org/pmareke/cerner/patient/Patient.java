@@ -1,11 +1,12 @@
 package org.pmareke.cerner.patient;
 
-import org.pmareke.cerner.demographic.Person;
-import org.pmareke.cerner.fever.Temperature;
-import org.pmareke.cerner.medication.Medication;
+import static java.util.stream.Collectors.joining;
 
 import java.util.Date;
 import java.util.List;
+import org.pmareke.cerner.demographic.Person;
+import org.pmareke.cerner.fever.Temperature;
+import org.pmareke.cerner.medication.Medication;
 
 /**
  * Created by pmareke on 22/09/16.
@@ -25,7 +26,8 @@ public class Patient extends Person {
         this.lastSeen = new Date();
     }
 
-    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications) {
+    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
+        List<Medication> medications) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
@@ -33,7 +35,8 @@ public class Patient extends Person {
         this.lastSeen = new Date();
     }
 
-    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications, Temperature temperature) {
+    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
+        List<Medication> medications, Temperature temperature) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
@@ -42,7 +45,8 @@ public class Patient extends Person {
         this.lastSeen = new Date();
     }
 
-    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases, List<Medication> medications, Temperature temperature, Date lastSeen) {
+    public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
+        List<Medication> medications, Temperature temperature, Date lastSeen) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
@@ -91,61 +95,34 @@ public class Patient extends Person {
         this.lastSeen = lastSeen;
     }
 
-    public boolean hasFever(){
-        return (temperature.getTemperature() > 39) ? true : false;
+    public boolean hasFever() {
+        return temperature.getTemperature() > 39;
     }
 
-    public String getFullAllergies(){
-        String fullAllergies = String.format("%s has the next allergies: \n", this.getName());
-
-        for (int i = 0; i < this.getAllergies().size(); i++) {
-                    fullAllergies += String.format("%s with a %s severity.",
-                            this.getAllergies().get(i).getName(),
-                            this.getAllergies().get(i).getSeverity()
-                    );
-                    fullAllergies += "\n";
-        }
-
-        return fullAllergies;
+    public String getFullAllergies() {
+        return this.getAllergies()
+            .stream()
+            .map(allergy -> String.format("%s with a %s severity.", allergy.getName(), allergy.getSeverity()))
+            .collect(joining("\n"));
     }
 
-    public String getFullDiseases(){
-        String fullDiseases = String.format("%s has the next diseases: \n", this.getName());
-
-        for (int i = 0; i < this.getDiseases().size(); i++) {
-            fullDiseases += String.format("%s disease.",
-                this.getDiseases().get(i).getName()
-            );
-            fullDiseases += "\n";
-        }
-
-        return fullDiseases;
+    public String getFullDiseases() {
+        return this.getDiseases()
+            .stream()
+            .map(disease -> String.format("%s disease.", disease.getName()))
+            .collect(joining("\n"));
     }
 
-    public String getFullMedicines(){
-        String medicines = String.format("%s has the next medicines: ", this.getName());
-
-        for (int i = 0; i < this.getMedications().size(); i++) {
-            final String medicine;
-            if (this.getMedications().get(i).getEnd() != null) {
-                medicine = String.format("%s from %s to %s.",
-                        this.getMedications().get(i).getName(),
-                        this.getMedications().get(i).getStart(),
-                        this.getMedications().get(i).getEnd()
-                );
-            } else {
-                medicine = String.format("%s since %s.",
-                        this.getMedications().get(i).getName(),
-                        this.getMedications().get(i).getStart()
-                );
-            }
-            medicines += medicine + "\n";
-        }
-
-        return medicines;
+    public String getFullMedicines() {
+        return this.getMedications()
+            .stream()
+            .map(medication -> medication.getEnd() != null
+                ? String.format("%s from %s to %s.", medication.getName(), medication.getStart(), medication.getEnd())
+                : String.format("%s since %s.", medication.getName(), medication.getStart()))
+            .collect(joining("\n"));
     }
 
-    public boolean hasMedicines(){
-        return ( this.getMedications().size() > 0 ) ? true : false ;
+    public boolean hasMedicines() {
+        return this.getMedications().size() > 0;
     }
 }
