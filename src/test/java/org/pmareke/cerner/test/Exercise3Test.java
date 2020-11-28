@@ -1,16 +1,23 @@
 package org.pmareke.cerner.test;
 
+import static org.pmareke.cerner.utils.Utils.createDate;
+
 import java.util.Collections;
-import java.util.Date;
 import org.pmareke.cerner.sort.LastSeenComparator;
 import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
  * Created by pmareke on 22/09/16.
  */
 public class Exercise3Test {
+
+    @BeforeTest
+    public void before_test() {
+        Utils.data();
+    }
 
     /**
      * Third exercise:
@@ -21,10 +28,10 @@ public class Exercise3Test {
 
     @Test()
     public void testExercise3() {
-        Utils.brad.setLastSeen(new Date("12/01/2000"));
+        Utils.brad.setLastSeen(createDate("12/01/2000"));
         Collections.sort(Utils.patients, new LastSeenComparator());
         Assert.assertEquals(Utils.tom, Utils.patients.get(0));
-        Utils.brad.setLastSeen(new Date("10/12/2017"));
+        Utils.brad.setLastSeen(createDate("10/12/2017"));
         Collections.sort(Utils.patients, new LastSeenComparator());
         Assert.assertEquals(Utils.brad, Utils.patients.get(0));
     }

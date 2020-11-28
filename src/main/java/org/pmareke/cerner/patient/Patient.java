@@ -2,9 +2,12 @@ package org.pmareke.cerner.patient;
 
 import static java.util.stream.Collectors.joining;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import org.pmareke.cerner.demographic.Person;
+import org.pmareke.cerner.fever.Location;
 import org.pmareke.cerner.fever.Temperature;
 import org.pmareke.cerner.medication.Medication;
 
@@ -17,13 +20,13 @@ public class Patient extends Person {
     private List<Disease> diseases;
     private List<Medication> medications;
     private Temperature temperature;
-    private Date lastSeen;
+    private Calendar lastSeen;
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
-        this.lastSeen = new Date();
+        this.lastSeen = Calendar.getInstance();
     }
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
@@ -32,7 +35,7 @@ public class Patient extends Person {
         this.allergies = allergies;
         this.diseases = diseases;
         this.medications = medications;
-        this.lastSeen = new Date();
+        this.lastSeen = Calendar.getInstance();
     }
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
@@ -42,11 +45,11 @@ public class Patient extends Person {
         this.diseases = diseases;
         this.medications = medications;
         this.temperature = temperature;
-        this.lastSeen = new Date();
+        this.lastSeen = Calendar.getInstance();
     }
 
     public Patient(String name, int age, Address address, List<Allergy> allergies, List<Disease> diseases,
-        List<Medication> medications, Temperature temperature, Date lastSeen) {
+        List<Medication> medications, Temperature temperature, Calendar lastSeen) {
         super(name, age, address);
         this.allergies = allergies;
         this.diseases = diseases;
@@ -72,7 +75,7 @@ public class Patient extends Person {
     }
 
     public List<Medication> getMedications() {
-        return medications;
+        return Optional.ofNullable(medications).orElse(Collections.emptyList());
     }
 
     public void setMedications(List<Medication> medications) {
@@ -80,18 +83,18 @@ public class Patient extends Person {
     }
 
     public Temperature getTemperature() {
-        return temperature;
+        return Optional.ofNullable(temperature).orElse(new Temperature(0, Location.Mouth));
     }
 
     public void setTemperature(Temperature temperature) {
         this.temperature = temperature;
     }
 
-    public Date getLastSeen() {
+    public Calendar getLastSeen() {
         return lastSeen;
     }
 
-    public void setLastSeen(Date lastSeen) {
+    public void setLastSeen(Calendar lastSeen) {
         this.lastSeen = lastSeen;
     }
 

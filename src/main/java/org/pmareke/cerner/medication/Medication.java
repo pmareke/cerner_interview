@@ -1,22 +1,23 @@
 package org.pmareke.cerner.medication;
 
-import java.util.Date;
+import java.util.Calendar;
 
 /**
  * Created by pmareke on 22/09/16.
  */
 public class Medication {
-    private String name;
-    private Date start;
-    private Date end;
 
-    public Medication(String name, Date start, Date end) {
+    private String name;
+    private Calendar start;
+    private Calendar end;
+
+    public Medication(String name, Calendar start, Calendar end) {
         this.name = name;
         this.start = start;
         this.end = end;
     }
 
-    public Medication(String name, Date start) {
+    public Medication(String name, Calendar start) {
         this.name = name;
         this.start = start;
     }
@@ -29,19 +30,19 @@ public class Medication {
         this.name = name;
     }
 
-    public Date getStart() {
+    public Calendar getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(Calendar start) {
         this.start = start;
     }
 
-    public Date getEnd() {
+    public Calendar getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(Calendar end) {
         this.end = end;
     }
 }

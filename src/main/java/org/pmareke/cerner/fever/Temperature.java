@@ -35,7 +35,7 @@ public class Temperature {
     }
 
     public double getTemperatureInFahrenheit() {
-        return this.temperature * (9 / 5.0) + 32;
+        return getTemperature() * (9 / 5.0) + 32;
     }
 
 }

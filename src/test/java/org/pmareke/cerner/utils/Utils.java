@@ -1,6 +1,7 @@
 package org.pmareke.cerner.utils;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.pmareke.cerner.demographic.Person;
@@ -30,6 +31,11 @@ public class Utils {
     public static Disease cancer;
 
     /**
+     * meditacions
+     */
+    public static List<Medication> meditacions;
+
+    /**
      * PATIENTS
      */
     public static Patient brad;
@@ -56,7 +62,10 @@ public class Utils {
             add(dust);
             add(cat);
         }};
-
+        Medication mediacion = new Medication("", createDate("10/1/2016"), createDate("10/12/2016"));
+        meditacions = new ArrayList<Medication>() {{
+            add(mediacion);
+        }};
         cancer = new Disease("cancer");
         diseases = new ArrayList<Disease>() {{
             add(cancer);
@@ -65,16 +74,17 @@ public class Utils {
         brad = new Patient("Brad", 41,
             new Address("UK", "London", "Paddigton", 1234567890),
             allergies,
-            diseases
+            diseases,
+            meditacions
         );
-        
+
         tom = new Patient("Tom", 41,
             new Address("UK", "London", "Paddigton", 1234567890),
             allergies,
             diseases,
             new ArrayList<Medication>(),
             new Temperature(20, Location.Ampit),
-            new Date("10/12/2016")
+            createDate("10/12/2016")
         );
 
         henry = new Patient("Henry", 41,
@@ -83,7 +93,7 @@ public class Utils {
             diseases,
             new ArrayList<>(),
             new Temperature(20, Location.Ampit),
-            new Date("10/12/2011")
+            createDate("10/12/2011")
         );
 
         susan = new Patient("Susan", 40,
@@ -92,7 +102,7 @@ public class Utils {
             diseases,
             new ArrayList<>(),
             new Temperature(20, Location.Ampit),
-            new Date("10/12/2007")
+            createDate("10/12/2007")
         );
 
         patients = new ArrayList<Patient>() {{
@@ -108,5 +118,14 @@ public class Utils {
         );
 
         carl = new Baby("Carl", new Date("09/23/1983"), "Europe", "Madrid");
+    }
+
+    public static Calendar createDate(String s) {
+        String[] x = s.split("/");
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, Integer.valueOf(x[0]));
+        cal.set(Calendar.MONTH, Integer.valueOf(x[1]));
+        cal.set(Calendar.YEAR, Integer.valueOf(x[2]));
+        return cal;
     }
 }

@@ -6,12 +6,18 @@ import org.pmareke.cerner.patient.Allergy;
 import org.pmareke.cerner.patient.Severity;
 import org.pmareke.cerner.utils.Utils;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 /**
  * Created by pmareke on 22/09/16.
  */
 public class Exercise2Test {
+
+    @BeforeTest
+    public void before_test() {
+        Utils.data();
+    }
 
     /**
      * Second exercise:
